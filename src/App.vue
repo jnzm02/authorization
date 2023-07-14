@@ -36,5 +36,6 @@ footer {
   margin: 0 auto;
   font-size: 14px;
   max-width: 1024px;
+  color: #828282;
 }
 </style>

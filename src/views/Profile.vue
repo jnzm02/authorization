@@ -85,10 +85,6 @@ const updateDrop = () => {
         </div>
       </div>
     </div>
-    <div class="bottom">
-      <span>created by <a class="link" href="https://github.com/jnzm02" target="_blank">jnzm02</a></span>
-      <span>devChallenges.io</span>
-    </div>
   </main>
 </template>
 
@@ -99,7 +95,6 @@ main {
   text-align: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
   background-color: #f3f3f3;
 }
 
@@ -226,16 +221,5 @@ hr {
 .link {
   color: #2D9CDB;
   cursor: pointer;
-}
-
-.bottom {
-  width: 70%;
-  max-width: 1024px;
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #828282;
-  font-size: 14px;
 }
 </style>

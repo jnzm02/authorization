@@ -45,9 +45,9 @@ const login = () => {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
   align-items: center;
-  height: 100vh;
+  width: 100vw;
   background-color: #f3f3f3;
 }
 
