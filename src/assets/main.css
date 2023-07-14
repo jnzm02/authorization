@@ -1,0 +1,12 @@
+@import './base.css';
+
+
+#app {
+  font-weight: normal;
+}
+
+body {
+    font-family: Noto Sans, sans-serif;
+    margin: 0;
+    font-size: 16px;
+}
