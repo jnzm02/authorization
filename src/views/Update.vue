@@ -27,16 +27,20 @@ const handleFileInput = (event: any) => {
 
 <template>
   <main>
-    <nav>
+    <nav class="profile-nav">
       <img src="/devchallenges.svg" alt="devchallenges">
       <div class="profile">
+
         <div v-if="user.photo">
           <img :src="user.photo" alt="avatar">
         </div>
+
         <div v-else>
           <img src="/blank.svg" alt="avatar">
         </div>
+
         <p v-if="user.name || user.email">{{ user.name || user.email }}</p>
+
         <img src="/arrow-bottom.svg" alt="arrow" @click="updateDrop" class="rotate-icon" :class="{ 'rotate': isRotated }">
         <dialog :class="{ 'visible': isRotated }">
           <div class="drop-option" :class="{ 'active' : active==='my-profile'}"><img src="/my-profile.svg" alt="">My Profile</div>
@@ -87,10 +91,6 @@ const handleFileInput = (event: any) => {
       </div>
       <div class="save"><button>Save</button></div>
     </div>
-    <div class="bottom">
-      <span>created by <a class="link" href="https://github.com/jnzm02" target="_blank">jnzm02</a></span>
-      <span>devChallenges.io</span>
-    </div>
   </main>
 </template>
 
@@ -101,13 +101,12 @@ main {
   text-align: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
   background-color: #f3f3f3;
 }
 
-nav {
+.profile-nav {
   width: 100vw;
-  //overflow: hidden;
+  // overflow: auto;
   max-width: 1324px;
   margin: 20px auto 0;
   display: flex;
@@ -127,6 +126,8 @@ nav {
   }
   .visible {
     width: 196px;
+    margin-right: 10%;
+    z-index: 1;
     padding: 12px;
     gap: 2px;
     display: flex;
@@ -289,17 +290,6 @@ button {
 .link {
   color: #2D9CDB;
   cursor: pointer;
-}
-
-.bottom {
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #828282;
-  font-size: 14px;
-  width: 70%;
-  max-width: 1024px;
 }
 
 .back {
