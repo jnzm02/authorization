@@ -1,12 +1,14 @@
 <script setup lang="ts">
-  
+  import { useAuthStore } from "@/stores/user";
+
+  const authStore = useAuthStore();
 </script>
 
 <template>
     <body>
       <RouterView/>
 
-      <footer>
+      <footer :class="{ 'minWindow': !authStore.isAuth}">
           <span>created by <a class="link" href="https://github.com/jnzm02" target="_blank">Devhouse</a></span>
           <span>devChallenges.io</span>
       </footer>
@@ -17,7 +19,7 @@
 body {
   background-color: #f3f3f3;
   min-height: calc(100% - 100px); /* Subtract footer height */
-  padding-bottom: 150px; /* Footer height */
+  padding-bottom: 100px; /* Footer height */
 }
 
 main {
@@ -29,7 +31,6 @@ main {
 footer {
   bottom: 20px;
   left: 0;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -37,5 +38,9 @@ footer {
   font-size: 14px;
   max-width: 1024px;
   color: #828282;
+}
+
+.minWindow {
+  max-width: 475px;
 }
 </style>

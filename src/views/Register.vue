@@ -24,10 +24,6 @@
       </div>
       <p class="temp">Already a member? <span class="link" @click="$router.push('login')">Login</span></p>
     </div>
-    <div class="bottom">
-      <span>created by <a class="link" href="https://github.com/jnzm02" target="_blank">jnzm02</a></span>
-      <span>devChallenges.io</span>
-    </div>
   </main>
 </template>
 
@@ -39,10 +35,11 @@
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
   align-items: center;
-  height: 100vh;
+  width: 100vw;
   background-color: #f3f3f3;
+  padding-top: 3%;
 }
 
 .window {
@@ -118,15 +115,5 @@ main {
 .link {
   color: #2D9CDB;
   cursor: pointer;
-}
-
-.bottom {
-  margin-top: 12px;
-  display: flex;
-  width: 474px;
-  justify-content: space-between;
-  align-items: center;
-  color: #828282;
-  font-size: 14px;
 }
 </style>
