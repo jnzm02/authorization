@@ -74,74 +74,7 @@ main {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 100vw;
   background-color: #f3f3f3;
-}
-
-.profile-nav {
-  width: 100vw;
-  // overflow: auto;
-  max-width: 1324px;
-  margin: 20px auto 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.profile {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 11px;
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-  }
-  .visible {
-    width: 196px;
-    margin-right: 10%;
-    z-index: 1;
-    padding: 12px;
-    gap: 2px;
-    display: flex;
-    flex-direction: column;
-    top: 100%;
-    right: 0;
-    margin-top: 10px;
-    border-radius: 12px;
-    border: 1px solid #E0E0E0;
-    background: #FFF;
-    list-style: none;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-    :hover {
-      background: #555555;
-    }
-  }
-  .drop-option {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .active {
-    background: #F2F2F2 !important;
-  }
-  hr {
-    border: 1px solid #E0E0E0;
-    margin: 4px 0;
-  }
-}
-
-.rotate-icon {
-  transition: transform 0.3s;
-  transform: rotate(-180deg);
-}
-
-.rotate-icon.rotate {
-  transform: rotate(0deg);
 }
 
 .window {

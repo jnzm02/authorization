@@ -44,10 +44,10 @@ const updateDrop = () => {
 
 <style scoped lang="scss">
 .profile-nav {
-  width: 100vw;
-  // overflow: auto;
   max-width: 1324px;
-  margin: 20px auto 0;
+  width: calc(100% - 40px);
+  padding: 0 20px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
