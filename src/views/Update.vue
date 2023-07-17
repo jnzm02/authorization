@@ -2,16 +2,10 @@
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import Footer from "@/components/footer.vue";
+import Navbar from "@/components/navbar.vue";
 
 const userStore = useUserStore();
 const user = ref(userStore.user);
-
-const isRotated = ref(false);
-const active = ref("my-profile");
-
-const updateDrop = () => {
-  isRotated.value = !isRotated.value;
-};
 
 const count = ref(0);
 const fileInputRef = ref(null);
@@ -28,29 +22,7 @@ const handleFileInput = (event: any) => {
 
 <template>
   <main>
-    <nav class="profile-nav">
-      <img src="/devchallenges.svg" alt="devchallenges">
-      <div class="profile">
-
-        <div v-if="user.photo">
-          <img :src="user.photo" alt="avatar">
-        </div>
-
-        <div v-else>
-          <img src="/blank.svg" alt="avatar">
-        </div>
-
-        <p v-if="user.name || user.email">{{ user.name || user.email }}</p>
-
-        <img src="/arrow-bottom.svg" alt="arrow" @click="updateDrop" class="rotate-icon" :class="{ 'rotate': isRotated }">
-        <dialog :class="{ 'visible': isRotated }">
-          <div class="drop-option" :class="{ 'active' : active==='my-profile'}"><img src="/my-profile.svg" alt="">My Profile</div>
-          <div class="drop-option" :class="{ 'active' : active==='group-chat'}"><img src="/group-chat.svg" alt="">Group Chat</div>
-          <hr>
-          <div class="drop-option" :class="{ 'active' : active==='logout'}" style="color: #EB5757"><img src="/logout.svg" alt="">Logout</div>
-        </dialog>
-      </div>
-    </nav>
+    <Navbar active="my-profile" />
     <div class="back" @click="$router.go(-1)">
       <img src="/arrowLeft.svg" alt="arrow-left">
       <p>Back</p>
