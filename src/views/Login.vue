@@ -1,15 +1,15 @@
 <template>
   <main>
-    <div class="window">
+    <form class="window">
       <img src="/devchallenges.svg" alt="devchallenges">
       <p class="title">Login</p>
       <div class="input">
         <img src="/mail.svg" alt="mail">
-        <input type="text" v-model="email" placeholder="Email">
+        <input type="text" v-model="email" placeholder="Email" autocomplete="username">
       </div>
       <div class="input">
         <img src="/mail.svg" alt="mail">
-        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Password" autocomplete="current-password">
       </div>
       <div class="button" @click="login">Login</div>
       <p class="temp">or continue with these social profile</p>
@@ -20,7 +20,7 @@
         <img src="/Gihub.svg" alt="github">
       </div>
       <p class="temp">Don’t have an account yet? <span class="link" @click="$router.push('register')">Register</span></p>
-    </div>
+    </form>
     <Footer type="auth"/>
   </main>
 </template>
@@ -28,15 +28,17 @@
 <script lang="ts" setup>
 import { ref } from "vue"
 import router from "@/router";
-import { useUserStore } from "@/stores/user";
+import { useUserStore, useAuthStore } from "@/stores/user";
 import Footer from "@/components/footer.vue"
 
-const userStore = useUserStore()
+const userStore = useUserStore();
+const authStore = useAuthStore();
 
 const email = ref('')
 const login = () => {
-  router.push('profile')
   userStore.updateEmail(email.value)
+  authStore.login();
+  router.push('profile')
 }
 </script>
 

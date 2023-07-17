@@ -3,10 +3,17 @@ import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import Footer from "@/components/footer.vue";
 import Navbar from "@/components/navbar.vue";
+import router from "@/router";
 
 const userStore = useUserStore();
 const user = ref(userStore.user);
+
 const new_image = ref("");
+const new_name = ref("");
+const new_bio = ref("");
+const new_phone = ref("");
+const new_email = ref("");
+const new_password = ref("");
 
 const handleImageUpload = (event: any) => {
   const file = event.target.files[0];
@@ -21,6 +28,23 @@ const handleImageUpload = (event: any) => {
   };
 
   reader.readAsDataURL(file);
+};
+
+const saveChanges = () => {
+  if (new_image.value) {
+    userStore.updatePhoto(new_image.value);
+  } if (new_bio.value) {
+    userStore.updateBio(new_bio.value);
+  } if (new_phone.value) {
+    userStore.updatePhone(new_phone.value);
+  } if (new_email.value) {
+    userStore.updateEmail(new_email.value);
+  } if (new_name.value) {
+    userStore.updateName(new_name.value);
+  } if (new_password.value) {
+    userStore.updatePassword(new_password.value);
+  }
+  router.push("profile")
 };
 </script>
 
@@ -41,31 +65,32 @@ const handleImageUpload = (event: any) => {
       <div class="image-uploader">
         <input type="file" id="upload-image" hidden @change="handleImageUpload">
         <label class="box" for="upload-image">
-          <img v-if="user.photo || new_image" class="back-image" :src="new_image" alt="avatar">
+          <img v-if="new_image" class="back-image" :src="new_image" alt="avatar">
+          <img v-else-if="user.photo" class="back-image" :src="user.photo" alt="avatar">
           <img class="camera" src="/camera.svg" alt="camera">
         </label>
       </div>
       <div class="info">
         <div>Name</div>
-        <input type="text" placeholder="Enter your name...">
+        <input type="text" placeholder="Enter your name..." v-model="new_name">
       </div>
       <div class="info">
         <div>Bio</div>
-        <textarea placeholder="Enter your bio..."></textarea>
+        <textarea placeholder="Enter your bio..." v-model="new_bio"></textarea>
       </div>
       <div class="info">
         <div>Phone</div>
-        <input type="text" placeholder="Enter your phone...">
+        <input type="text" placeholder="Enter your phone..." v-model="new_phone">
       </div>
       <div class="info">
         <div>Email</div>
-        <input type="text" placeholder="Enter your email...">
+        <input type="text" placeholder="Enter your email..." v-model="new_email">
       </div>
       <div class="info">
         <div>Password</div>
-        <input type="text" placeholder="Enter your new password...">
+        <input type="text" placeholder="Enter your new password..." v-model="new_password">
       </div>
-      <div class="save"><button @click="userStore.updatePhoto(new_image)">Save</button></div>
+      <div class="save"><button @click="saveChanges">Save</button></div>
     </div>
     <Footer type="profile"/>
   </main>

@@ -1,16 +1,16 @@
 <template>
   <main>
-    <div class="window">
+    <form class="window">
       <img src="/devchallenges.svg" alt="devchallenges">
       <p class="title">Join thousands of learners from around the world</p>
       <p class="description">Master web development by making real-life projects. There are multiple paths for you to choose</p>
       <div class="input">
         <img src="/mail.svg" alt="mail">
-        <input type="text" placeholder="Email">
+        <input type="text" placeholder="Email" autocomplete="email">
       </div>
       <div class="input">
         <img src="/mail.svg" alt="mail">
-        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Password" autocomplete="new-password">
       </div>
       <div class="button">
         Start coding now
@@ -23,7 +23,7 @@
         <img src="/Gihub.svg" alt="github">
       </div>
       <p class="temp">Already a member? <span class="link" @click="$router.push('login')">Login</span></p>
-    </div>
+    </form>
     <Footer type="auth"/>
   </main>
 </template>
