@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore, useAuthStore } from "@/stores/user";
+import router from "@/router";
 
 const userStore = useUserStore();
+const authStore = useAuthStore();
 
 const user = ref(userStore.user);
 const props = defineProps({
@@ -12,6 +14,11 @@ const props = defineProps({
 const isRotated = ref(false);
 const updateDrop = () => {
   isRotated.value = !isRotated.value;
+};
+
+const logout = () => {
+  authStore.logout();
+  router.push("login");
 };
 
 </script>
@@ -36,7 +43,7 @@ const updateDrop = () => {
         <div class="drop-option" :class="{ 'active' : active==='my-profile'}"><img src="/my-profile.svg" alt="">My Profile</div>
         <div class="drop-option" :class="{ 'active' : active==='group-chat'}"><img src="/group-chat.svg" alt="">Group Chat</div>
         <hr>
-        <div class="drop-option" :class="{ 'active' : active==='logout'}" style="color: #EB5757"><img src="/logout.svg" alt="">Logout</div>
+        <div class="drop-option" :class="{ 'active' : active==='logout'}" style="color: #EB5757" @click="logout"><img src="/logout.svg" alt="">Logout</div>
       </dialog>
     </div>
   </nav>

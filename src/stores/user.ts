@@ -5,17 +5,18 @@ import { type User } from '@/types/User'
 
 export const useAuthStore = defineStore('auth', () => {
     const isAuth = ref<boolean>(false)
-    const authenticate = () => {
+    const login = () => {
         isAuth.value = true;
     }
 
-    const disconnect = () => {
+    const logout = () => {
         isAuth.value = false;
     }
 
     return {
         isAuth,
-        authenticate
+        login,
+        logout,
     }
 });
 export const useUserStore = defineStore('user', () => {
@@ -35,9 +36,29 @@ export const useUserStore = defineStore('user', () => {
         user.value.photo = photo
     }
 
+    const updateName = (name: string) => {
+        user.value.name = name
+    }
+
+    const updateBio = (bio: string) => {
+        user.value.bio = bio
+    }
+
+    const updatePhone = (phone: string) => {
+        user.value.phone = phone
+    }
+
+    const updatePassword = (password: string) => {
+        user.value.password = password
+    }
+
     return {
         user,
         updateEmail,
-        updatePhoto
+        updatePhoto,
+        updateName,
+        updateBio,
+        updatePhone,
+        updatePassword
     }
 })
