@@ -21,6 +21,7 @@
       </div>
       <p class="temp">Don’t have an account yet? <span class="link" @click="$router.push('register')">Register</span></p>
     </div>
+    <Footer type="auth"/>
   </main>
 </template>
 
@@ -28,6 +29,8 @@
 import { ref } from "vue"
 import router from "@/router";
 import { useUserStore } from "@/stores/user";
+import Footer from "@/components/footer.vue"
+
 const userStore = useUserStore()
 
 const email = ref('')
@@ -40,12 +43,13 @@ const login = () => {
 <style scoped lang="scss">
 main {
   display: flex;
+  min-height: 100vh;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
   width: 100vw;
   background-color: #f3f3f3;
-  padding-top: 10%;
 }
 
 .window {
