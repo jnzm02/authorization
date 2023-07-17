@@ -24,22 +24,26 @@
       </div>
       <p class="temp">Already a member? <span class="link" @click="$router.push('login')">Login</span></p>
     </div>
+    <Footer type="auth"/>
   </main>
 </template>
 
 <script lang="ts" setup>
+import Footer from "@/components/footer.vue"
 
 </script>
 
 <style scoped lang="scss">
 main {
   display: flex;
+  min-height: 100vh;
+  overflow-y: scroll;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
   width: 100vw;
   background-color: #f3f3f3;
-  padding-top: 3%;
 }
 
 .window {

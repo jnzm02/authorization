@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
+import Footer from "@/components/footer.vue";
 
 const userStore = useUserStore();
 const user = ref(userStore.user);
@@ -97,6 +98,7 @@ const active = ref("my-profile");
         </div>
       </div>
     </div>
+    <Footer type="profile"/>
   </main>
 </template>
 
