@@ -6,17 +6,21 @@ import Navbar from "@/components/navbar.vue";
 
 const userStore = useUserStore();
 const user = ref(userStore.user);
+const new_image = ref("");
 
-const count = ref(0);
-const fileInputRef = ref(null);
-const selectedFile = ref(null);
-const openFileInput = () => {
-  count.value++;
-  fileInputRef.value.click();
-};
+const handleImageUpload = (event: any) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
 
-const handleFileInput = (event: any) => {
-  selectedFile.value = event.target.files[0];
+  reader.onload = (e) => {
+    if (e.target) {
+      if (typeof e.target.result === "string") {
+        new_image.value = e.target.result;
+      }
+    }
+  };
+
+  reader.readAsDataURL(file);
 };
 </script>
 
@@ -31,17 +35,16 @@ const handleFileInput = (event: any) => {
       <header>
         <div>
           <p class="header-text">Change Info</p>
-          {{ user.photo }}
-          {{ count}}
           <p class="temp">Changes will be reflected to every services</p>
         </div>
       </header>
-      <div class="box" @click="openFileInput">
-        <img v-if="user.photo" :src="user.photo" class="back-image" alt="avatar">
-        <div v-else class="back-image"></div>
-        <img src="/camera.svg" alt="camera" class="camera">
+      <div class="image-uploader">
+        <input type="file" id="upload-image" hidden @change="handleImageUpload">
+        <label class="box" for="upload-image">
+          <img v-if="user.photo || new_image" class="back-image" :src="new_image" alt="avatar">
+          <img class="camera" src="/camera.svg" alt="camera">
+        </label>
       </div>
-      <input type="file" id="profile-image" ref="fileInput" style="display: none" @change="handleFileInput">
       <div class="info">
         <div>Name</div>
         <input type="text" placeholder="Enter your name...">
@@ -62,7 +65,7 @@ const handleFileInput = (event: any) => {
         <div>Password</div>
         <input type="text" placeholder="Enter your new password...">
       </div>
-      <div class="save"><button>Save</button></div>
+      <div class="save"><button @click="userStore.updatePhoto(new_image)">Save</button></div>
     </div>
     <Footer type="profile"/>
   </main>
@@ -117,6 +120,8 @@ header {
   margin: 0 50px 32px;
   cursor: pointer;
   position: relative;
+  background: #E0E0E0;
+  border-radius: 8px;
   .camera {
     z-index: 1;
   }
